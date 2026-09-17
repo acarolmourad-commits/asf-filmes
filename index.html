@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASF Filmes — Cinema do surf feminino</title>
+<meta name="description" content="Guia de filmes e documentários sobre mulheres no surf: para se inspirar entre uma sessão e outra. Satélite do app ASF.">
+<link rel="canonical" href="https://acarolmourad-commits.github.io/asf-filmes/">
+<style>body{font-family:system-ui,sans-serif;margin:0;background:#18181b;color:#fafafa}header{background:#e11d48;color:#fff;padding:2rem;text-align:center}nav{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;padding:1rem;background:#27272a}nav a{color:#fda4af;text-decoration:none;font-size:.85rem}main{max-width:760px;margin:2rem auto;padding:0 1rem}.card{background:#27272a;border-radius:16px;padding:1.5rem;margin-bottom:1rem}.f{border-left:4px solid #e11d48;padding:.8rem;margin:.6rem 0;background:#1f1f22;border-radius:8px}input{width:100%;padding:.6rem;margin:.3rem 0;border:1px solid #e11d48;border-radius:8px;background:#18181b;color:#fafafa;box-sizing:border-box}button{background:#e11d48;color:#fff;border:0;border-radius:9999px;padding:.7rem 1.4rem;font-weight:700;cursor:pointer}footer{text-align:center;padding:2rem;color:#71717a}</style>
+</head>
+<body>
+<header><h1>ASF Filmes 🎬</h1><p>Cinema de surf para se inspirar entre uma sessão e outra</p></header>
+<nav id="net"></nav>
+<main>
+<div class="card"><h2>🏆 Clássicos essenciais</h2>
+<div class="f"><b>Girls Can't Surf</b> (2021) — A luta das pioneiras por igualdade no circuito mundial. ⭐⭐⭐⭐⭐</div>
+<div class="f"><b>Surf Girls (Hawaii)</b> (2022, doc) — A nova geração do surf feminino havaiano. ⭐⭐⭐⭐</div>
+<div class="f"><b>It Ain't Pretty</b> (2016) — Mulheres no big surf de Ocean Beach, SF. ⭐⭐⭐⭐</div>
+<div class="f"><b>Bethany Hamilton: Unstoppable</b> (2018) — Superação e surf de altíssimo nível. ⭐⭐⭐⭐⭐</div>
+<div class="f"><b>Soul Surfer</b> (2011) — A história de Bethany Hamilton no cinema. ⭐⭐⭐</div>
+</div>
+<div class="card"><h2>➕ Sugerir um filme</h2>
+<input id="t" placeholder="Título do filme/doc">
+<input id="d" placeholder="Por que vale assistir?">
+<button onclick="add()">Sugerir</button>
+<div id="sug"></div></div>
+<div class="card"><p>🍿 Maratone e depois vá surfar: confira a <a href="https://acarolmourad-commits.github.io/asf-previsao/">Previsão</a>, aprenda os termos no <a href="https://acarolmourad-commits.github.io/asf-glossario/">Glossário</a> e conheça as pioneiras no <a href="https://acarolmourad-commits.github.io/asf-historia/">ASF História</a>.</p></div>
+</main>
+<footer>ASF Filmes — satélite do <a href="https://acarolmourad-commits.github.io/asf-app/">app ASF</a></footer>
+<script>
+const sites=[["asf-app","App ASF"],["asf-praias","Praias"],["asf-previsao","Previsão"],["asf-treino","Treino"],["asf-eventos","Eventos"],["asf-glossario","Glossário"],["asf-historia","História"],["asf-comunidade","Comunidade"],["asf-quiz","Quiz"],["asf-galeria","Galeria"],["asf-podcast","Podcast"],["asf-bemestar","Bem-Estar"],["asf-diario","Diário"],["asf-viagens","Viagens"],["asf-desafios","Desafios"]];
+document.getElementById('net').innerHTML=sites.map(s=>`<a href="https://acarolmourad-commits.github.io/${s[0]}/">${s[1]}</a>`).join('');
+function load(){return JSON.parse(localStorage.getItem('asf-filmes')||'[]');}
+function render(){const l=load();document.getElementById('sug').innerHTML=l.length?l.map(x=>`<div class="f"><b>${x.t}</b> — ${x.d}</div>`).join(''):'';}
+function add(){const t=document.getElementById('t').value.trim();if(!t)return alert('Informe o título!');const l=load();l.unshift({t,d:document.getElementById('d').value});localStorage.setItem('asf-filmes',JSON.stringify(l.slice(0,50)));document.getElementById('t').value='';document.getElementById('d').value='';render();}
+render();
+</script>
+</body>
+</html>
