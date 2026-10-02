@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://acarolmourad-commits.github.io/asf-filmes/sitemap.xml
+
+Sitemap: https://filmes.asf.surf/sitemap.xml
